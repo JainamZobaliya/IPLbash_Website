@@ -1,0 +1,105 @@
+body 
+{
+background-image:url("ipl.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-position: 50% 50%;
+font-family: sans-serif;
+color:#D7FF33;
+margin:0;
+padding: 0;
+}
+
+.center{
+	padding-top: 45px;
+	align-self:left;
+}
+
+.loginform{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding-top: 45px;
+	-webkit-transform: translate(100%,100%) ;
+	-moz-transform: translate(-50%,-50%) ;
+	-o-transform: translate(-50%,-50%) ;
+	transform: translate(-50%,-50%) ;
+	background: rgba(0,0,0,0.5);
+	width:500px;
+	height: 350px;
+	border-radius: 20px;
+}
+
+h2{
+	margin: 0;
+	padding: 0 0 20px;
+}
+
+.loginform input[type='text'], .loginform input[type='password']
+{
+	background: transparent;
+	color: #F1C40F;
+} 
+
+.loginform input[type='submit']
+{
+	background-color: white;
+	color: black;
+	height: 25px;
+	font-size: 14px;
+	border-radius: 10px;
+	cursor: pointer;
+} 
+
+.loginform input[type='submit']:hover
+{
+	background-color: #0B0A0B;
+	color: white;	
+}
+
+::placeholder{
+	color: #7F8C8D;
+}
+
+
+.loginform1{
+	position: absolute;
+	top: 500px;
+	left: 50%;
+	padding-top: 15px;
+	-webkit-transform: translate(100%,100%) ;
+	-moz-transform: translate(-50%,-50%) ;
+	-o-transform: translate(-50%,-50%) ;
+	transform: translate(-50%,-50%) ;
+	background: rgba(0,0,0,0.5);
+	width:550px;
+	height: 615px;
+	border-radius: 25px;
+}
+
+.loginform1 input[type='text'], .loginform1 input[type='Password'], .loginform1 input[type='email'], .loginform1 input[type='tel'],textarea,.loginform1 input[type='date']
+{
+	background: transparent;
+	color: #F1C40F;
+} 
+
+.loginform1 input[type='submit']
+{
+	background-color: white;
+	color: black;
+	height: 25px;
+	font-size: 14px;
+	border-radius: 10px;
+	cursor: pointer;
+} 
+
+.loginform1 input[type='submit']:hover
+{
+	background-color: #0B0A0B;
+	color: white;	
+}
+
+.error {
+	color: beige;
+}
