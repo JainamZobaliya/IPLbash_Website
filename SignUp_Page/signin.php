@@ -1,142 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="STYLE2.css">
-	<title>REGISTER</title>
-</head>
-<body style="color:#FFF307;">
+    <head>
+        <title>IPL Registration Form</title>
+	    <link rel="stylesheet" type="text/css" href="signUp.css">
+    </head>
+    <body>
+        <div class="container">
+                <div class="img1"></div>
+                <div class="img2"></div>
+            <?php
 
-<?php
-    $fnameErr = $lnameErr = $emailErr = $bdayErr = $passErr = $genderErr = $numberErr = $usernameErr = "";
-    $fname = $lname = $email = $bday = $gender = $number = $pass = $password = $username ="";
-    
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {  
-      if (empty($_POST["first_name"])) {
-        $fnameErr = "<br>* First Name is required";
-      } else {
-        $fname = $_POST["first_name"];
-        if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-          $fnameErr = "<br>* Invalid Format";
-        }
-      }
-
-      if (empty($_POST["last_name"])) {
-        $lnameErr = "* Last Name is required    ";
-      } else {
-        $lname = $_POST["last_name"];
-        if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-          $lnameErr = "* Invalid Format";
-        }
-      }
-
-      if (empty($_POST["bday"])) {
-        $bdayErr = "* DOB is required";
-      } else {
-        $bday = $_POST['bday'];
-        $today = date("Y-m-d");
-        $diff = date_diff(date_create($bday), date_create($today));
-        if($diff->format('%y%') < 10){
-          $bdayErr = "* You are too young to register<br>";
-        }
-      }
-      
-      if (empty($_POST["mail"])) {
-        $emailErr = "<br>* Email is required<br>";
-      } else {
-        $email = $_POST["mail"];
-      }
-      
-      if (empty ($_POST["gender"])) {  
-        $genderErr = "<br>* Gender is required";  
-      } else {  
-          $gender = $_POST["gender"];  
-      } 
-
-      if (empty($_POST["number"])) {  
-        $numbererErr = "<br>* Contact Number is required";  
-      } else {  
-        $year = $_POST["number"];    
-        if (!preg_match ("/^[0-9]*$/", $number) ) {  
-        $numberErr = "* Only numeric value is allowed.";  
-        }    
-      if (strlen ($number) != 10) {  
-        $numberErr = "<br>* Year must contain 10 digits.";  
-        }  
-      }  
-	  
-	    if (empty($_POST["username"])) {
-        $usernameErr = "<br>* Username is required";
-      }
-      else {
-        $username = $_POST["username"];
-        if (!preg_match("/^[a-zA-Z0-9 ]*$/",$username)) {
-          $usernameErr = "<br>* Invalid Format";
-        }
-      }
-
-	    if (empty($_POST["password"] || $_POST["pass"])) {
-        $passErr = "<br>* Password is required";
-      }
-      else 
-      {
-        $password = $_POST["password"];
-        $pass = $_POST["pass"];
-        if($pass != $password)
-        {
-          $passErr="<br>* Passwords do not match!!";
-        }
-      }
-    }
-        
-    ?>
-
-	<center>
-	<h1>IPL LIVE</h1><br>
-	<h2>Sign-up</h2>
-	<div class="center">
-	<form class="loginform1" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-	<fieldset style="width: 500px; border-radius: 15px">
-	<br>
-	<strong>Name:</strong>&nbsp&nbsp
- <input type="text" required style="border-radius: 5px" name="first_name" id="first_name" placeholder="First Name" value="">&nbsp&nbsp
- <input type="text" required style="border-radius: 5px" name="last_name" id="last_name" placeholder="Last Name" value="">
- <span class="error"> <?php echo $fnameErr;?></span>
- <span class="error"> <?php echo $lnameErr;?></span>
- <br>
- <br><br>
-	<strong>Date Of Birth:&nbsp&nbsp</strong> <input type="date" name="bday" id="bday" required></input><br><br>
-	<span class="error"> <?php echo $bdayErr;?></span>
-	<strong>Gender:&nbsp&nbsp</strong> <input type="radio" id="gender" name="gender" value="Male">Male</input>
-	<input type="radio" name="gender" id="gender" value="Female">Female</input>
-	<span class="error"> <?php echo $genderErr;?></span><br><br>
-	<strong>Contact:&nbsp&nbsp</strong>
- <input type="tel" required style="border-radius: 5px" id="number" name="number" value="">
- <span class="error"> <?php echo $numberErr;?></span>
- <br><br>
- <strong>Email-Id:&nbsp&nbsp</strong>
- <input type="email" required style="border-radius: 5px" placeholder="Example@xyz.com" id="mail" name="mail" value="">
- <span class="error"> <?php echo $emailErr;?></span>
- <br><br>
- <strong>Address:</strong><br><br>
- <textarea name="Text1" cols="30" rows="5" required name="ADDRESS" placeholder="Enter Your Address Here..." style="border-radius: 5px"></textarea>
- <br><br>
- <strong>Username:&nbsp&nbsp</strong>
- <input type="text" required style="border-radius: 5px" id="username" name="username" value="">
- <span class="error"> <?php echo $usernameErr;?></span>
- <br><br>
- <strong>Password:&nbsp&nbsp</strong>
- <input type="Password" required name="password" id="password" style="border-radius: 5px; " value="">
- <br><br>
- <strong>Confirm Password:&nbsp&nbsp</strong>
- <input type="Password" required name="pass" id="pass" style="border-radius: 5px; " value="">
- <span class="error"> <?php echo $passErr;?></span>
- <br><br>
- <center><input type="submit" value="Register"></center>
-	</fieldset><br>
- <a style="color: #F0FF00;" href="Signin.html"><big>Already a User??</big></a><br><br><br>
-	</form><br>
-	</center>
-	</div>
-</body>
+            ?>
+            <div class="regForm">
+                    <form action="dbsignup.php" method="POST">
+                        <fieldset>
+                            <input type="text" class="inpText" name="fname" id="fname" autocomplete="Off" placeholder="First Name">
+                            <br><br>
+                            <input type="text" class="inpText" name="lname" id="lname" autocomplete="Off" placeholder="Last Name">
+                            <br><br>
+                            Gender: 
+                            <input class="inpText" type="radio" name="gender" id="gender" value="Male">
+                            <label class="inpText" for="male">Male</label>
+                            <input class="inpText" type="radio" name="gender" id="gender" value="Female">
+                            <label class="inpText" for="female">Female</label>
+                            <input class="inpText" type="radio" name="gender" id="gender" value="Other">
+                            <label class="inpText" for="other">Other</label> 
+                            <br><br>
+                            <label class="inpText" for="dob">Birth Date: </label>
+                            <input type="date" name="dob" id="dob" max="2010-12-31" min="1910-12-31">
+                            <br><br>
+                            <label class="inpText" for="Contact_Mobile">Mobile No.:</label>
+                            <input class="inpText" type="tel" id="mobile" name="mobile" autocomplete="On" placeholder="54-454-68-452" pattern="[0-9]{10}"> 
+                            <br><br>
+                            <label class="inpText" for="mail">Email Id.: </label>
+                            <input class="inpText" type="email" name="mail" id="mail" autocomplete="On" placeholder="Example@air.com">
+                            <br><br>
+                            <label class="inpText address" for="Address">Address: </label>
+                            <textarea class="inpText" name="address" id="address" rows="3" cols="30" placeholder="Enter Your Address..." autocomplete="off"></textarea>
+                            <br><br>
+                            <label class="inpText" for="psd1">Password:</label>
+                            <input class="inpText" type="Password" name="password1" id="password1" placeholder="********" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> 
+                            <br><br>
+                            <label class="inpText" for="psd2">Confirm Password:</label>
+                            <input class="inpText" type="Password" name="password2" id="paassword2" placeholder="********" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                            <br><br>
+                            <label>Your favorite Team:</label> 
+                            <select class="team" name="favteam" id="favteam">
+                                <option value="default" diabled></option>
+                                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                                <option value="Mumbai Indians">Mumbai Indians</option>
+                                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                                <option value="Kolakata Knight Riders">Kolakata Knight Riders</option>
+                                <option value="Sunrises Hyderabad">Sunrises Hyderabad</option>
+                                <option value="Kings XI Punjab">Kings XI Punjab</option>
+                                <option value="Delhi Capitals">Delhi Capitals</option>
+                                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                            </select>
+                            <p>ALREADY A USER...?<a href="login.php"> LOGIN</a></p>
+                        </fieldset>
+                        <input type="submit" value="REGISTER" class="button">
+                    </form>
+                </div>
+        </div>
+    </body>
 </html>
