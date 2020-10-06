@@ -10,8 +10,9 @@ session_start();
 <body>
 <?php
 
-    session_unset();
-    session_destroy();
+    setcookie('mail','',time()+(2 * 365 * 24 * 60 * 60),"/");
+    setcookie('fname','',time()+(2 * 365 * 24 * 60 * 60),"/");
+    setcookie('lname','',time()+(2 * 365 * 24 * 60 * 60),"/");
     header('Location: login.php')
 
 ?>
