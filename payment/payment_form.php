@@ -8,29 +8,13 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
   
-	<style>
-
-input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
+<style>
 label {
+  color: black;
   margin-bottom: 10px;
   display: block;
 }
-
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
-}
-
 
 *{
 	 box-sizing: border-box;
@@ -56,18 +40,13 @@ body {
     padding: 0 30px;
 }
 
-input[type=text] {
+input {
   width: 25%;
   margin-right: 20px;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
-}
-
-label {
-  margin-bottom: 10px;
-  display: block;
 }
 
 .row:after {
@@ -87,7 +66,7 @@ label {
 }
 
 @media screen and (max-width: 600px) {
-  .column1 .column2 {
+.column1 .column2 {
     width: 95%;
     display: block;
     margin-bottom: 20px;
@@ -96,21 +75,6 @@ label {
 
 .column2 hr{
     border: 1px dashed silver;
-}
-
-input {
-  width: 300px;
-  height: 3em;
-}
-input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.black {
-  color: black;
 }
 
 .icon-container {
@@ -122,6 +86,30 @@ input[type=text] {
 .container {
   padding: 5px 20px 15px 20px;
   border-radius: 3px;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
 }
 
 	</style>
@@ -139,9 +127,8 @@ input[type=text] {
   <div class="column2">
     <div class="card">
     <br>
-    <?php
-        include 'payment_nav.php';
-      ?>
+    <button class="accordion">Payment Details </button>
+    <div class="panel"><br><br>
          <label for="fname">Accepted Cards</label>
             <div class="icon-container">
               <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -162,17 +149,48 @@ input[type=text] {
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
+                <input type="text" id="cvv" name="cvv" placeholder="***">
               </div>
               <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
             </div>
             <br>
-            <p style="padding-right:30px;"><button style="padding:15px;" type="button">Confirm Payment!</button></p>
+            <p style="padding-right:30px;"><button style="padding:15px;" type="button" href="confirm_payment.php">Confirm Payment!</button></p>
           </div>
-          
+      
+
+        <button class="accordion">Shipping Details</button>
+        <div class="panel">
+        <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+            <label for="state"><i class="fa fa-map-marker"></i>State</label>
+            <input type="text" id="state" name="state" placeholder="NY">
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" placeholder="10001">
+            </div>
         </div>
+        </div>
+
+
+
+
+
+
+
+  </div>
+</div>
     
   
   <div class="column1">
@@ -188,8 +206,27 @@ input[type=text] {
       <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
 
     
-    
+      </div>
     </div>   
   </div>
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
 </body>
 </html>
