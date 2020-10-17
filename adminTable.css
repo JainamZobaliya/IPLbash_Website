@@ -1,5 +1,4 @@
-
-.tabLink {
+.tabLink, .tabLink2 {
     background-color: navy;
     color: white;
     float: left;
@@ -10,7 +9,11 @@
     font-size: 20px;
     width: 33.33%;
     font-weight: bold;
-  }
+}
+
+.tabLink2{
+    width: 25%;
+}
   
 .tabLink:hover {
     background-color: rgb(40, 40, 139);
@@ -19,7 +22,7 @@
 .tabContent {
     color: navy;
     display: none;
-    padding: 100px 20px;
+    min-height: 500px;
     height: 100%;
 }
   
@@ -52,12 +55,14 @@
     background-color: orangered;
 }
 
-.userTables td .deleteBtn{
+.userTables td .deleteBtn, .userTables td .editBtn{
+    margin: 5px;
     background-color: red;
     color: navy;
     padding: 3px;
     font-size: 20px;
-    border: 1px solid navy;
+    border: 1px groove navy;
+    border-radius: 10px;
 }
 
 .userTables th {
@@ -73,7 +78,29 @@
     color: red;
 }
 
-.deleteBtn a:link, .deleteBtn a:visited{
+.userTables tr:hover .editBtn  {
+    background-color: white;
+    color: navy;
+}
+
+.deleteBtn a:link, .deleteBtn a:visited, .deleteBtn a:link, .editBtn a:link, .editBtn a:visited, .editBtn a:link{
     color: inherit;
 }
 
+.userTables tr .editBtn:hover  {
+    background: green;
+    color: white;
+}
+
+.userTables tr .deleteBtn:hover  {
+    background: red;
+    color: white;
+}
+
+.itemDescription{
+    min-width: 200px;
+}
+
+.timeStamp, .userId{
+    min-width: 100px;
+}
