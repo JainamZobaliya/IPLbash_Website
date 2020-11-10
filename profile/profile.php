@@ -6,14 +6,10 @@ session_start();
 <head>
 	<title>Profile Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="navBar.css">
-    <link rel="stylesheet" type="text/css" href="teamPage.css">
-    <link rel="stylesheet" type="text/css" href="homePage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="navBar.css">
+  <link rel="stylesheet" type="text/css" href="teamPage.css">
+  <link rel="stylesheet" type="text/css" href="homePage.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -24,7 +20,7 @@ session_start();
 }
 
 body {
-	background-color: grey;
+	background-color: navy;
   font-family: Times new roman;
   color: white;
   font-family: sans-sarif;
@@ -71,7 +67,7 @@ label {
   padding: 30px;
   text-align: left;
   background-color: transparent;
-  height:1000px;
+  height:1300px;
 }
 
 @media screen and (max-width: 600px) {
@@ -116,28 +112,29 @@ li a:hover {
 .navright {
     float:right;
 }
+.modal-body {
+  color:black;
+}
+.modal-title {
+  color:black;
+}
+input[type=radio] {
+    border: 0px;
+    width: 10%;
+    height: 2em;
+}
 
 	</style>
 </head>
 
 <body>
-<div class="navBar">
-			<div class="navBarLogo"><a class="logo" href="https://www.iplt20.com/"></a></div>
-			<ul class="navLink">
-				<li><a class="activeSite" href="teamPage.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
-				<li><a href="#"><i class="fas fa-tshirt"></i> Teams</a></li>
-				<li><a href="#"><i class="fa fa-calendar"></i> Schedule</a></li>
-				<li><a href="#"><i class="fa fa-image"></i> Gallery</a></li>
-				<li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
-				<li><a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a></li>
-				<li style="float: right;"><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
-				<li style="float: right;"><a id="storeBtn" href="#"><i class="fas fa-store"></i> Store</a></li>
-			</ul>
+		<div class="navBarr" onload="activePage('fa-home')">
+			<?php
+				include 'navBar.html';
+			?>
 		</div>
-        <br>
-
-
     <?php
+    $mail=$_SESSION['mail'];
     include 'Datasource.php';
       $query1 = "SELECT * from signup WHERE mail='$mail'";
       $result1 = mysqli_query($conn,$query1);
@@ -152,7 +149,7 @@ li a:hover {
           $gender=$row['gender'];
           $dob=$row['dob'];
           $mobile=$row['mobile'];
-          $address=$row['address'];
+          $address=$row['addres'];
           $usertype=$row['user'];
           $favteam=$row['favteam'];
           
@@ -167,7 +164,7 @@ li a:hover {
         <?php echo"<h2>WELCOME ".$_SESSION['fname']." ".$_SESSION['lname']." ;</h2>"; ?>
     	<p align="left" style="color: black;"><b><i><u>PERSONAL INFORMATION</u></i></b></p><br><br>
     	<label for="fname"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Full Name</label>
-            <input type="text" id="fname" name="firstname" value='$fname'>
+            <input type="text" id="fname" name="firstname" value=$fname >
             <input type="text" id="lname" name="lastname" value='$lname'><br><hr><br>
         <label for="dob"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;Date of Birth</label>
             <input type="text" id="dob" name="dob" value='$dob'>
@@ -182,11 +179,11 @@ li a:hover {
             <input type="text" id="address" name="address" value='$address'><br><hr>
             <label for="favteam"><i class="fas fa-heart"></i>&nbsp;&nbsp;FAVOURITE TEAM</label>
             <input type="text" id="favteam" name="favteam" value='$favteam'><br><hr>
-
-    </div>
-    <<button type="button" data-toggle="modal" data-target="#editprofile">Open Modal</button>
+      <div>
+    <button type="button" data-toggle="modal" data-target="#editprofile"> UPDATE</button>
   </div>
-
+  <div>
+  <div>
 
 <!-- Modal -->
 <div class="modal fade" id="editprofile" role="dialog">
@@ -196,28 +193,25 @@ li a:hover {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h2 class="modal-title">UPDATE PROFILE</h2>
         </div>
         <div class="modal-body">
         <form action="dbsignup.php" method="POST">
                         <fieldset>
-                            <input type="text" class="inpText" name="fname" id="fname" autocomplete="Off" placeholder="First Name">
+                            First Name<br><input type="text" class="inpText" name="fname" id="fname" autocomplete="Off" placeholder="First Name">
                             <br><br>
-                            <input type="text" class="inpText" name="lname" id="lname" autocomplete="Off" placeholder="Last Name">
+                            Last Name<br><input type="text" class="inpText" name="lname" id="lname" autocomplete="Off" placeholder="Last Name">
                             <br><br>
                             Gender: 
-                            <input class="inpText" type="radio" name="gender" id="gender" value="Male">
-                            <label class="inpText" for="male">Male</label>
-                            <input class="inpText" type="radio" name="gender" id="gender" value="Female">
-                            <label class="inpText" for="female">Female</label>
-                            <input class="inpText" type="radio" name="gender" id="gender" value="Other">
-                            <label class="inpText" for="other">Other</label> 
+                            <label class="inpText" for="male">Male</label><input class="inpText" type="radio" name="gender" id="gender" value="Male">
+                            <label class="inpText" for="female">Female</label><input class="inpText" type="radio" name="gender" id="gender" value="Female">
+                            <label class="inpText" for="other">Other</label><input class="inpText" type="radio" name="gender" id="gender" value="Other">
                             <br><br>
                             <label class="inpText" for="dob">Birth Date: </label>
                             <input type="date" name="dob" id="dob" max="2010-12-31" min="1910-12-31">
                             <br><br>
                             <label class="inpText" for="Contact_Mobile">Mobile No.:</label>
-                            <input class="inpText" type="tel" id="mobile" name="mobile" autocomplete="On" placeholder="54-454-68-452" pattern="[0-9]{10}"> 
+                            <input class="inpText" type="tel" id="mobile" name="mobile" autocomplete="On" pattern="[0-9]{10}"> 
                             <br><br>
                             <label class="inpText" for="mail">Email Id.: </label>
                             <input class="inpText" type="email" name="mail" id="mail" autocomplete="On" placeholder="Example@air.com">
@@ -225,12 +219,7 @@ li a:hover {
                             <label class="inpText address" for="Address">Address: </label>
                             <textarea class="inpText" name="address" id="address" rows="3" cols="30" placeholder="Enter Your Address..." autocomplete="off"></textarea>
                             <br><br>
-                            <label class="inpText" for="psd1">Password:</label>
-                            <input class="inpText" type="Password" name="password1" id="password1" placeholder="********" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> 
-                            <br><br>
-                            <label class="inpText" for="psd2">Confirm Password:</label>
-                            <input class="inpText" type="Password" name="password2" id="paassword2" placeholder="********" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-                            <br><br>
+                           
                             <label>Your favorite Team:</label> 
                             <select class="team" name="favteam" id="favteam">
                                 <option value="default" diabled></option>
@@ -242,18 +231,16 @@ li a:hover {
                                 <option value="Kings XI Punjab">Kings XI Punjab</option>
                                 <option value="Delhi Capitals">Delhi Capitals</option>
                                 <option value="Rajasthan Royals">Rajasthan Royals</option>
-                            </select>
-        </div>
-        <div class="modal-footer">
+                            </select><br><br>
+                            <input type="submit" value="UPDATE" class="button">
+                            <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+        </div>
+        
       </div>
       
-    </div>
-  </div>
+    
   
-
-
-
 </body>
 </html>
