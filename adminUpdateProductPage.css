@@ -1,4 +1,6 @@
-* {box-sizing:border-box}
+* {
+	box-sizing:border-box;
+}
 
 body{
     margin: 10px auto;
@@ -57,38 +59,45 @@ body{
 
 label{
     margin-left: 10px;
+    font-weight: 700;
+    font-size: large;
 }
 
 ::placeholder {
     color: navy;
     font-weight: 500;
+    font-size: medium;
 }
 
 input, textarea{
     border: 2px groove navy;
     border-radius: 10px;
     background-color: transparent;
-    font-weight: bold;
+    font-weight: bolder;
     color: navy;
     text-align: center;
     padding:5px;
     width: auto;
+    font-size: medium;
 }
 
 .address{
     position: relative;
     top: -25px;
+    font-size: medium;
 }
 
 input:focus, input:focus::placeholder, textarea:focus, textarea:focus::placeholder {
     background-color: navy;
     color: aliceblue;
     border-radius: 10px;
+    font-size: medium;
 }
 
 input[disabled] {
     background-color: navy;
     color: orange;
+    font-size: medium;
 }
 
 .button{
@@ -101,6 +110,7 @@ input[disabled] {
     border-radius: 10px;
     top: 15px;
     cursor: pointer;
+    font-size: medium;
 }
 
 .success{

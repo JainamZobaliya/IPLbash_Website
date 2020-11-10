@@ -13,6 +13,7 @@
 
 .tabLink2{
     width: 25%;
+    min-height: 80px;
 }
   
 .tabLink:hover {
@@ -24,6 +25,7 @@
     display: none;
     min-height: 500px;
     height: 100%;
+    padding-top: 10px;
 }
   
 
@@ -34,13 +36,21 @@
 .userTables {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
+    margin: 100px auto;
+    min-width: 1200px;
 }
 
 .userTables td, .userTables th {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
+    font-weight: 300;
+}
+
+.userTables th {
+    font-weight: bolder;
+    font-size: medium;
 }
 
 .userTables tr:nth-child(even){
@@ -97,10 +107,27 @@
     color: white;
 }
 
-.itemDescription{
+.userTables .itemDescription{
     min-width: 200px;
 }
+.userTables .srNo, .userTables .id{
+    min-width: 50px;
+}
 
-.timeStamp, .userId{
-    min-width: 100px;
+.userTables .name{
+    min-width: 80px;
+}
+
+.userTables .itemImage{
+    height: 120px;
+    width: 120px;
+}
+
+.userTables .itemDescription{
+    max-width: 100px;
+}
+
+.userTables .timeStamp, .userTables .userId{
+    word-wrap: break-word;
+    max-width: 100px;
 }

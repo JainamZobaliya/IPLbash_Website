@@ -1,16 +1,22 @@
 <?php
     session_start();
-    if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        $itemId = $_GET['id'];
-        //Refer: https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-a-php-string/
-        $ciphering = "AES-128-CTR"; // Store the cipher method             
-        $iv_length = openssl_cipher_iv_length($ciphering); // Use OpenSSl Encryption method 
-        $options = 0; 
-        $decryption_iv = '1234567891011121';    // Non-NULL Initialization Vector for decryption  
-        $decryption_key = "iplBASH";    // Store the decryption key 
-        // Use openssl_decrypt() function to decrypt the data 
-        $itemId = openssl_decrypt ($itemId, $ciphering, $decryption_key, $options, $decryption_iv);
-    }
+    // if($_SERVER['REQUEST_METHOD'] === 'GET'){
+    //     $itemId = $_GET['id'];
+    //     //Refer: https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-a-php-string/
+    //     $ciphering = "AES-128-CTR"; // Store the cipher method             
+    //     $iv_length = openssl_cipher_iv_length($ciphering); // Use OpenSSl Encryption method 
+    //     $options = 0; 
+    //     $decryption_iv = '1234567891011121';    // Non-NULL Initialization Vector for decryption  
+    //     $decryption_key = "iplBASH";    // Store the decryption key 
+    //     // Use openssl_decrypt() function to decrypt the data 
+    //     $itemId = openssl_decrypt ($itemId, $ciphering, $decryption_key, $options, $decryption_iv);
+    //     $_POST['itemId'] = $itemId;
+    //     echo "<script>console.log('$itemId');</script>";
+    // }
+    $itemId = $_GET['id'];
+    $id = $_GET['id'];
+    echo "<script>console.log('$id');</script>";
+    $_POST['itemId'] = $id;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,7 +106,11 @@
                 }
 
                 if($flag){
+                    $_POST['itemId'] = $id;
+                    echo "<script>console.log('$id');</script>";
                     $_SESSION['item'] = $_POST; 
+                    echo "<script>console.log('$itemId');</script>";
+                    echo "<script>console.log('Hello, $itemId');</script>";
                     header("Location: adminUpdateProductCode.php");
                 }
             }
@@ -137,7 +147,7 @@
                 <div class="productMainContainer">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
                         <label for="id">Product Id: </label>
-                        <input name="id" type="number" value="<?php echo $itemId?>"> <br/><br/>
+                        <input name="id" disabled type="number" value="<?php echo $itemId?>"> <br/><br/>
                         <label for="category">Product Category Id: </label>
                         <input name="category" disabled type="number" value="<?php echo $itemCategory?>"> <br/><br/>
                         <label for="ProductName">Product Name: </label>
