@@ -21,9 +21,9 @@ session_start();
     $usertype="User";
 
 
-    $query= "UPDATE signup SET fname=?,lname=?,gender=?,dob=?,mobile=?,address=?,favteam=? WHERE mail=?";
+    $query= "UPDATE signup SET fname=?,lname=?,gender=?,dob=?,mobile=?,addres=?,favteam=? WHERE mail=?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssssss", $fname,$lname,$gender,$dob,$mobile,$address,$favteam,$usertype);
+        $stmt->bind_param("ssssssss", $fname,$lname,$gender,$dob,$mobile,$address,$favteam,$mail);
     	
     mysqli_close($conn);
         $_SESSION['fname']=$fname;

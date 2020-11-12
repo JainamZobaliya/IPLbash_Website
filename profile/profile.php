@@ -164,21 +164,21 @@ input[type=radio] {
         <?php echo"<h2>WELCOME ".$_SESSION['fname']." ".$_SESSION['lname']." ;</h2>"; ?>
     	<p align="left" style="color: black;"><b><i><u>PERSONAL INFORMATION</u></i></b></p><br><br>
     	<label for="fname"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Full Name</label>
-            <input type="text" id="fname" name="firstname" value=$fname >
-            <input type="text" id="lname" name="lastname" value='$lname'><br><hr><br>
+            <input type="text" id="fname" name="firstname" value='<?php echo'$fname';?>' >
+            <input type="text" id="lname" name="lastname" value='<?php echo'$lname';?>'><br><hr><br>
         <label for="dob"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;Date of Birth</label>
-            <input type="text" id="dob" name="dob" value='$dob'>
+            <input type="text" id="dob" name="dob" value='<?php echo'$dob';?>'>
             <br><hr><br>
             <label for="mail"><i class="fa fa-envelope"></i>&nbsp;&nbsp;EMAIL ID</label>
-            <input type="text" id="mail" name="mail" value='$mail'><br><hr>
+            <input type="text" id="mail" name="mail" value='<?php echo'$mail';?>'><br><hr>
             <label for="mobile"><i class="fa fa-mobile"></i>&nbsp;&nbsp;Mobile No.</label>
-            <input type="text" id="mob" name="mob" value='mobile'><br><hr>
+            <input type="text" id="mob" name="mob" value='<?php echo'$mobile';?>'><br><hr>
             <label for="gender"><i class="fa fa-user"></i>&nbsp;&nbsp;GENDER</label>
-            <input type="text" id="gender" name="gender" value='$gender'><br><hr>
+            <input type="text" id="gender" name="gender" value='<?php echo'$gender';?>'><br><hr>
             <label for="address"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;ADDRESS</label>
-            <input type="text" id="address" name="address" value='$address'><br><hr>
+            <input type="text" id="address" name="address" value='<?php echo'$address';?>'><br><hr>
             <label for="favteam"><i class="fas fa-heart"></i>&nbsp;&nbsp;FAVOURITE TEAM</label>
-            <input type="text" id="favteam" name="favteam" value='$favteam'><br><hr>
+            <input type="text" id="favteam" name="favteam" value='<?php echo'$favteam';?>'><br><hr>
       <div>
     <button type="button" data-toggle="modal" data-target="#editprofile"> UPDATE</button>
   </div>
