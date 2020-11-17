@@ -50,12 +50,12 @@
                 <td><?php echo $categoryUpdatedAt; ?></td>
                 <td>
                     <div class="editBtn" id="openModal">
-                        <a href="adminUpdateCategory.php?id=<?php echo $encryptedId; ?>">
+                        <a href="adminProductPage-updateCategory.php?id=<?php echo $categoryId; ?>">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
                     </div>
                     <div class="deleteBtn" id="openModal">
-                        <a href="adminDeleteCategory.php?id=<?php echo $encryptedId; ?>">
+                        <a href="adminProductPage-deleteCategory.php?id=<?php echo $categoryId; ?>">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>
