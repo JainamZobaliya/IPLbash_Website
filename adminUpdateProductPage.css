@@ -94,7 +94,7 @@ input:focus, input:focus::placeholder, textarea:focus, textarea:focus::placehold
     font-size: medium;
 }
 
-input[disabled] {
+input[disabled], input[readonly] {
     background-color: navy;
     color: orange;
     font-size: medium;

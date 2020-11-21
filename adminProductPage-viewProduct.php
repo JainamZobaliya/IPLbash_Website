@@ -50,6 +50,7 @@
                 <th>Category</th>
                 <th>Image</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Quantity</th>
                 <th>Inserted By</th>
                 <th>Inserted At</th>
@@ -80,6 +81,7 @@
                         $itemImageURL = "../image/shop/".$row['Image_URL'];
                         $itemDescription = $row['Product_Description'] ;
                         $itemQuantity = $row['Quantity'];
+                        $itemPrice = $row['Product_Price'];
                         $itemInsertedBy = $row['Inserted_By'];
                         $itemInsertedAt = $row['Inserted_At'];
                         $itemUpdatedBy = $row['Updated_By'];
@@ -94,6 +96,7 @@
                 <td class="id"><?php echo "".$itemCategory; ?></td>
                 <td><img src="<?php echo $itemImageURL; ?>" alt="<?php echo $itemImage; ?>" class="itemImage"></td>
                 <td class="itemDescription"><?php echo $itemDescription; ?></td>
+                <td class="price">&#8377 <?php echo $itemPrice; ?>/-</td>
                 <td><?php echo $itemQuantity; ?></td>
                 <td class="userId"><?php echo $itemInsertedBy; ?></td>
                 <td class="timeStamp"><?php echo $itemInsertedAt; ?></td>
@@ -101,13 +104,12 @@
                 <td class="timeStamp"><?php echo $itemUpdatedAt; ?></td>
                 <td>
                     <div class="editBtn" id="openModal">
-                        <a href="adminUpdateProduct.php?id=<?php echo $itemId; ?>">
-                        <!-- <a href="adminUpdateProduct.php?id=<?php echo $encryptedId; ?>"> -->
+                        <a href="adminProductPage-updateProduct.php?id=<?php echo $itemId; ?>">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
                     </div>
                     <div class="deleteBtn" id="openModal">
-                        <a href="adminDeleteProduct.php?id=<?php echo $encryptedId; ?>">
+                        <a href="adminProductPage-deleteProduct.php?id=<?php echo $itemId; ?>">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>
