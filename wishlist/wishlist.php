@@ -1,38 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IPL Bash Wishlist</title>
+    </head>
+    <body>
 <?php
-$itemNo=1
-$itemId = $_POST['Product_Id'];
+include 'Datasource.php'
+
+$mail=$_SESSION['mail'];
 $query1 = "SELECT * from wishlist WHERE mail=?";
     $stmt = $conn->prepare($query1); 
     $stmt->bind_param("s", $mail);
     $stmt->execute();
     $result1 = $stmt->get_result();
-    while($row = $result1->fetch_assoc()){
-        $itemId = $_POST['Product_Id'];
-        $itemName = $_POST['Product_Name'];
-        $itemCategory = $_POST['Category_Id'];
-        $itemImageURL = $_POST['Image_URL']
-        $itemDescription = $_POST['Product_Description'];
-        $quantity = $_POST['quantity'];
-    }
+    $totalProduct = mysqli_num_rows($result)
+    if($totalProduct > 0)
+	    {
+        while($row = $result1->fetch_assoc()){
+            $Product_Id = $row['Product_Id'];
+            $productName = $row['Product_Name'];
+            $Category_Id = $row['Category_Id'];
+            $productImageURL = $row['Image_URL']
+            $Product_Description = $row['Product_Description'];
+            $quantity = 1;
 
 ?>
- <table class="userTables">
-    <tr>
-        <th>Sr. No.</th>
-        <th>Id.</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Quantity</th>
-    </tr>
+<div class="productCard">
+    <div class="productDescriptionDiv">
+        <img class="productImage" src="<?php echo $productImageURL; ?>" alt="<?php echo $productImage; ?>">
+    </div>
+    <span class="wishList tooltip">
+        <span class="far fa-heart" onmouseover="solidHeart(this)" onmouseout="borderHeart(this)" onclick="addWishList(this)">
+            <span class="tooltipText">Add to Wish-List</span>
+        </span>
+    </span>
+    <div class="productName"><?php echo $productName; ?></div>
+    <div class="productPrice">&#8377 <?php echo $productPrice; ?> /-</div>
+    <div class="productButton">
+        <div class="cart fa fa-shopping-cart" onmouseover="cartPlus(this)" onmouseout="normalCart(this)">
+            <span class="cartText">Add To Cart</span>
+        </div>
+        <div class="buyNow fa fa-shopping-bag">
+            <span class="buyText ">Buy Now</span>
+        </div>
+    </div>
+</div>
 
-    <tr>
-        <td class="srNo"><?php echo $itemNo; ?></td>
-        <td class="id"><?php echo $itemId; ?></td>
-        <td class="name"><?php echo $itemName; ?></td>
-        <td class="id"><?php echo "".$itemCategory; ?></td>
-        <td><img src="<?php echo $itemImageURL; ?>" alt="<?php echo $itemImage; ?>" class="itemImage"></td>
-        <td class="itemDescription"><?php echo $itemDescription; ?></td>
-        <td><?php echo '1'; ?></td>
-    </tr>
+    <?php 
+            }
+        }
+    ?>
+
+    <footer class="footer">
+        <?php
+            include 'Footer.html';
+        ?>
+    </footer>	
+</body>
+</html>
