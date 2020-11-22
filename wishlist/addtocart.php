@@ -16,7 +16,7 @@ $query1 = "SELECT * from wishlist WHERE mail=?";
     }
 
 
-$query1 = "INSERT INTO wishlist VALUES (?,?,?,?,?,?,?)";
+$query1 = "INSERT INTO cart VALUES (?,?,?,?,?,?,?)";
 $result1 = mysqli_prepare($conn,$query1);
 mysqli_stmt_bind_param($result1,"siissss",$mail,$itemId,$itemName,$itemCategory,$itemImageURL,$itemDescription,1);
 if(mysqli_stmt_execute($result1)){

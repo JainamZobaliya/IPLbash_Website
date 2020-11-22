@@ -105,7 +105,8 @@
             </div>
                 <div class="itemPrice">&#8377<input type='text' id='price' name='price' value='<?php echo'$price'; ?>'> /-</div>
                 <div class="cart fa fa-shopping-cart" onmouseover="cartPlus(this)" onmouseout="normalCart(this)">
-                    <span class="cartText">Add To Cart</span>
+                <form method='POST' action='addtocart.php'>
+            <input class="tooltipText" type="submit" value="Add to Cart" class="button">
                 </div>
                 <div class="buyNow fa fa-shopping-bag">
                 <span class="buyText ">Buy Now</span>
